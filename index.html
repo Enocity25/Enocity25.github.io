@@ -341,7 +341,11 @@ form .btn{justify-content:center;margin-top:6px}
 /* character lock: reference plates */
 .cgrid{display:grid;grid-template-columns:2.4fr 1fr;gap:22px;margin-top:40px}
 .plate{margin:0;background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
-.plate.sheet{grid-column:1/-1}
+.plate.sheet,.plate.film{grid-column:1/-1}
+.plate.film button{aspect-ratio:16/9;cursor:pointer}
+.plate .pp{position:absolute;left:50%;top:50%;translate:-50% -50%;z-index:2;width:72px;height:72px;border-radius:50%;background:rgba(241,239,234,.92);display:grid;place-items:center;box-shadow:0 12px 24px -10px rgba(0,0,0,.55);transition:scale .3s var(--ease)}
+.plate .pp svg{width:22px;height:22px;margin-left:4px}
+.plate button:hover .pp{scale:1.08}
 .plate button{display:block;width:100%;border:0;padding:0;cursor:zoom-in;background:#8E8E8E;position:relative}
 .plate.face button{aspect-ratio:1600/893}.plate.outfit button{aspect-ratio:3/4}.plate.sheet button{aspect-ratio:1376/768}
 .plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
@@ -498,6 +502,10 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
         <button type="button" data-full="https://drive.google.com/thumbnail?id=1mf25hA4XflSe_NDvED6t70PWfVHJiOnF&sz=w1600" aria-label="Enlarge Dr Diana character sheet"><img src="https://drive.google.com/thumbnail?id=1mf25hA4XflSe_NDvED6t70PWfVHJiOnF&sz=w1600" alt="Dr Diana character sheet: outfit front, full back view and close-up face" loading="lazy" referrerpolicy="no-referrer"></button>
         <figcaption><b><i>03</i>Character sheet</b>Outfit front, full back view and a close-up of the face in one image. This is the reference every scene is generated from, so she looks the same in every shot.</figcaption>
       </figure>
+      <figure class="plate film" data-reveal data-tilt="2">
+        <button type="button" data-film="1E2UDgu_KamQnLoTKApXBy70R9gsUWuQa" aria-label="Play the Dr Diana film"><img src="https://drive.google.com/thumbnail?id=1E2UDgu_KamQnLoTKApXBy70R9gsUWuQa&sz=w1600" alt="Dr Diana in her dental clinic, waving" loading="lazy" referrerpolicy="no-referrer"><span class="pp" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#1C1E22"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span></button>
+        <figcaption><b><i>04</i>On screen</b>The finished film: the same Dr Diana, now moving, talking and greeting young patients. Click to play.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -637,6 +645,8 @@ const PROJECTS = [
   {cat:"ad",        title:"Fitness at home, no gym needed", blurb:"An older woman who feels the gym isn't for her tries a vibration plate at home. Vertical product ad in Danish.", video:"https://drive.google.com/file/d/1JoT5x7s7oZ090P8sXWVOhA3SbbMMDH0Z/view", tall:true, len:"0:55"},
   {cat:"story",     title:"A day with Marilyn's Moment", blurb:"A creator's day, from morning prayer to filming, made as a promo for her YouTube channel.", video:"https://drive.google.com/file/d/1gchnvMinABy6Mc0HZ2YzCt6ofxaZfTMx/view", tall:true, len:"0:46"},
   {cat:"series",    title:"Sister Girl, Ep 2: The Money Talk", blurb:"Four friends finally have the money conversation nobody wants. Episode from an animated series.", video:"https://drive.google.com/file/d/1gpUbipUSHnypTJMZjDhwf69e8cytPxUZ/view", len:"0:51"},
+  {cat:"ad",        title:"Dr Diana: a dentist kids will love", blurb:"Dr Diana welcomes young patients to Native Dental with a wave, a toothbrush and a little sparkle. Character film built from the sheets in the Characters section.", video:"https://drive.google.com/file/d/1E2UDgu_KamQnLoTKApXBy70R9gsUWuQa/view", len:"0:18"},
+  {cat:"ad",        title:"Cream glow", blurb:"A woman gets ready at her bathroom mirror, then steps into a grand evening event. Vertical skincare ad.", video:"https://drive.google.com/file/d/1xaYKUwRaOzM74Bc8j9kSYMjTWoMOxp_v/view", tall:true, len:"1:04"},
 ];
 
 const labels={ad:"Story ad",explainer:"Explainer",story:"Personal story",kids:"Kids",series:"Series"};
@@ -691,7 +701,7 @@ document.getElementById('lbclose').onclick=()=>{lb.close();};
 /* Character plates open full size */
 (function(){
   const box=document.getElementById('imgbox'), im=document.getElementById('imgfull');
-  document.querySelectorAll('.plate button').forEach(b=>b.addEventListener('click',()=>{ im.src=b.dataset.full; im.alt=b.querySelector('img').alt; box.showModal(); }));
+  document.querySelectorAll('.plate button').forEach(b=>b.addEventListener('click',()=>{ if(b.dataset.film){ const k=PROJECTS.findIndex(p=>driveId(p.video)===b.dataset.film); if(k>-1) openFilm(k); return; } im.src=b.dataset.full; im.alt=b.querySelector('img').alt; box.showModal(); }));
   document.getElementById('imgclose').onclick=()=>box.close();
   box.addEventListener('click',e=>{ if(e.target===box) box.close(); });
 })();
