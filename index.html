@@ -8,7 +8,20 @@
 <meta property="og:title" content="Enoch A — Pixar-style AI animated films">
 <meta property="og:description" content="Story ads, explainers, wedding films and kids' content, made with AI from your script to a finished video.">
 <meta name="theme-color" content="#F3F3F3">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="canonical" href="https://enocity25.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -10 174 190'%3E%3Cpath fill='%231C1E22' d='M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enocity25.github.io/">
+<meta property="og:image" content="https://enocity25.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://enocity25.github.io/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Enoch A","description":"Pixar-style 3D animated films made with AI: story ads, explainers, brand stories and series episodes, from script to finished video.","url":"https://enocity25.github.io/","image":"https://enocity25.github.io/og.png","founder":{"@type":"Person","name":"Agboola Enoch Samuel"},"sameAs":["https://www.fiverr.com/s/2pQxZae"]}</script>
+<script>
+document.documentElement.classList.add('js');
+try{ if(sessionStorage.getItem('ea-intro')) document.documentElement.classList.add('seen'); else sessionStorage.setItem('ea-intro','1'); }catch(e){}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -64,7 +77,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 
 /* buttons: chunky, press down when clicked */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:2px solid transparent;cursor:pointer;
-  box-shadow:0 5px 0 var(--edge,rgba(0,0,0,.3)),0 16px 22px -10px rgba(28,30,34,.4);transition:transform .14s var(--ease),box-shadow .14s var(--ease)}
+  box-shadow:0 5px 0 var(--edge,rgba(0,0,0,.3)),0 16px 22px -10px rgba(28,30,34,.4);transition:transform .14s var(--ease),box-shadow .14s var(--ease),translate .25s var(--ease)}
 .btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--edge,rgba(0,0,0,.3)),0 20px 26px -10px rgba(28,30,34,.42)}
 .btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--edge,rgba(0,0,0,.3)),0 6px 10px -6px rgba(28,30,34,.4)}
 .btn-wa{background:#25D366;color:#062b16;--edge:#128C4A}
@@ -145,6 +158,62 @@ header{position:sticky;top:0;z-index:20;background:rgba(243,243,243,.82);backdro
 .frame.sky{background:radial-gradient(120% 90% at 20% 10%,#b8e0ff,var(--sky))}
 @keyframes rise{from{opacity:0;translate:0 44px}to{opacity:1;translate:0 0}}
 @media(max-width:760px){.strip{grid-template-columns:repeat(3,1fr)}.frame:nth-child(n+4){display:none}.frame:nth-child(1){--a:16deg}.frame:nth-child(2){--a:0deg}.frame:nth-child(3){--a:-16deg}}
+
+/* film strip tiles show real frames from the films */
+.frame{border:0;padding:0;font:inherit;cursor:pointer;background-color:var(--ink)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%;transition:transform .6s var(--ease)}
+.frame:hover img{transform:scale(1.06)}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(20,18,30,.72));z-index:1}
+.frame::before{z-index:2}
+.frame span{z-index:3}
+.frame .ftag{position:absolute;top:10px;left:12px;z-index:3;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.04em;color:#fff;background:rgba(28,30,34,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:3px 8px;border-radius:999px}
+
+/* featured films: a cinema screen that cycles through the work */
+.player.feature{padding:0;display:block;cursor:pointer;text-align:left}
+.feature .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;overflow:hidden}
+.feature .slide.on{opacity:1}
+.feature .slide .bg{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(26px) brightness(.5) saturate(1.2);transform:scale(1.12)}
+.feature .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.feature .slide.tall img{object-fit:contain}
+.feature .slide.on img{animation:kenburns 7s ease-out both}
+@keyframes kenburns{from{scale:1.08}to{scale:1}}
+.feature .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(20,18,30,.35) 0,transparent 26%,transparent 50%,rgba(20,18,30,.82) 100%)}
+.feature .tag{position:absolute;top:18px;left:18px;z-index:3;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 13px;border-radius:999px;font-weight:600;font-size:13px;color:#fff}
+.feature .tag i{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 0 rgba(255,107,91,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(255,107,91,0)}100%{box-shadow:0 0 0 0 rgba(255,107,91,0)}}
+.feature .cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:clamp(18px,3vw,34px);display:flex;align-items:flex-end;justify-content:space-between;gap:18px;color:#fff}
+.feature .cap small{display:block;color:#d9d6ea;font-size:14px;margin-bottom:6px}
+.feature .cap h3{font-size:clamp(20px,3vw,36px);max-width:20ch}
+.feature .watch{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border-radius:999px;padding:13px 20px;font-weight:600;white-space:nowrap;box-shadow:0 5px 0 rgba(0,0,0,.3),0 16px 22px -10px rgba(0,0,0,.5);transition:transform .2s var(--ease)}
+.feature:hover .watch{transform:translateY(-2px)}
+.feature .watch svg{width:16px;height:16px}
+.feature .dots{position:absolute;top:22px;right:18px;z-index:4;display:flex;gap:6px}
+.feature .dots button{width:9px;height:9px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.45);cursor:pointer;transition:width .3s var(--ease),background .3s}
+.feature .dots button[aria-current=true]{width:26px;background:#fff}
+@media(max-width:640px){.feature .cap{gap:10px;padding:16px}.feature .cap small{font-size:12px;margin-bottom:2px}.feature .cap h3{font-size:18px}.feature .watch{padding:9px 13px;font-size:13px}.feature .watch svg{width:12px;height:12px}.feature .tag{top:12px;left:12px;font-size:12px;padding:5px 10px}.feature .dots{top:18px;right:12px;gap:4px}.feature .dots button{width:7px;height:7px}.feature .dots button[aria-current=true]{width:18px}}
+
+/* scrolling category band */
+.band{overflow:hidden;padding:clamp(18px,3vw,34px) 0}
+.ticker{background:var(--ink);color:#fff;transform:rotate(-1.6deg);margin:0 -40px;box-shadow:0 18px 30px -18px rgba(28,30,34,.5)}
+.ticker .track{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker span{font-weight:800;font-size:clamp(22px,3.2vw,40px);line-height:1;padding:18px 0 18px 28px;white-space:nowrap;display:flex;align-items:center;gap:28px}
+.ticker span:nth-child(even){color:transparent;-webkit-text-stroke:1.5px #fff}
+.ticker span::after{content:"";width:.42em;height:.42em;border-radius:50%;background:var(--c,var(--sun));display:inline-block}
+.ticker span:nth-child(4n+2){--c:var(--coral)}.ticker span:nth-child(4n+3){--c:var(--lagoon)}.ticker span:nth-child(4n+4){--c:var(--grape)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* scroll progress */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:40;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--coral),var(--sun),var(--lagoon),var(--grape));pointer-events:none}
+
+/* brand intro (plays once per visit) */
+.intro{position:fixed;inset:0;z-index:100;background:var(--paper);display:grid;place-items:center;pointer-events:none;animation:introOut .55s ease 1.35s forwards}
+.intro .in{display:grid;justify-items:center;gap:18px;perspective:600px}
+.intro svg{width:92px;height:104px;overflow:visible;animation:introFlip .9s var(--ease) both;filter:drop-shadow(2px 2px 0 var(--coral)) drop-shadow(2px 2px 0 var(--sun)) drop-shadow(2px 2px 0 var(--lagoon)) drop-shadow(2px 2px 0 var(--grape))}
+.intro b{font-weight:700;letter-spacing:.32em;font-size:15px;animation:introWord .8s var(--ease) .35s both}
+@keyframes introFlip{from{transform:rotateY(-100deg) scale(.6);opacity:0}to{transform:none;opacity:1}}
+@keyframes introWord{from{opacity:0;letter-spacing:.9em}to{opacity:1;letter-spacing:.32em}}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
+.seen .intro{display:none}
 
 /* showreel: tilted back until it scrolls into view */
 .reel{margin-top:clamp(40px,6vw,72px);position:relative}
@@ -285,10 +354,13 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
   .js [data-reveal]{opacity:1;transform:none}
   .js .reel .player{transform:none}
   .cube{transform:rotateX(-24deg) rotateY(-32deg)}
+  .intro{display:none}
 }
 </style>
 </head>
 <body>
+<div class="intro" aria-hidden="true"><div class="in"><svg viewBox="0 0 150 170"><path fill="#1C1E22" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>ENOCH A</b></div></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header>
   <div class="wrap nav">
@@ -341,26 +413,27 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
       <div class="stat" data-tilt="8"><strong>Script to screen</strong>Characters, scenes, voice and edit, all handled</div>
     </div>
 
-    <div class="strip" aria-hidden="true">
+    <div class="strip" id="strip">
       <div class="frame coral"><span>Story ads</span></div>
-      <div class="frame sun"><span>Kids' episodes</span></div>
+      <div class="frame sun"><span>Brand stories</span></div>
       <div class="frame lagoon"><span>Explainers</span></div>
-      <div class="frame grape"><span>Wedding stories</span></div>
+      <div class="frame grape"><span>Personal stories</span></div>
       <div class="frame sky"><span>Series</span></div>
     </div>
 
     <div class="reel" data-reveal>
-      <div class="player" id="reel">
-        <!-- REPLACE: paste your showreel link in SHOWREEL below -->
-        <div class="ph">
-          <div class="playbtn"><svg viewBox="0 0 24 24" fill="#1C1E22" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
-          <strong>Showreel</strong>
-          <small>Your 60–90 second reel goes here.</small>
-        </div>
-      </div>
+      <!-- Featured films screen. Set SHOWREEL in the script to show a single reel here instead. -->
+      <div class="player feature" id="reel" aria-label="Featured films"></div>
     </div>
   </div>
 </section>
+
+<div class="band" aria-hidden="true">
+  <div class="ticker"><div class="track">
+    <span>Story ads</span><span>Brand films</span><span>Explainers</span><span>Series episodes</span><span>Personal stories</span><span>16:9 and 9:16</span>
+    <span>Story ads</span><span>Brand films</span><span>Explainers</span><span>Series episodes</span><span>Personal stories</span><span>16:9 and 9:16</span>
+  </div></div>
+</div>
 
 <section id="work">
   <div class="wrap">
@@ -563,17 +636,29 @@ document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('clic
 }));
 
 const lb=document.getElementById('lb'),fr=document.getElementById('lbframe');
+function openFilm(i){ const p=PROJECTS[i]; if(!p||!p.video) return false; lb.classList.toggle('tall',!!p.tall); fr.src=embed(p.video); lb.showModal(); return true; }
 grid.addEventListener('click',e=>{
   const c=e.target.closest('.card'); if(!c) return;
-  const p=PROJECTS[c.dataset.i];
-  if(!p.video){ c.querySelector('.meta small').textContent="Video link coming soon"; return; }
-  lb.classList.toggle('tall',!!p.tall); fr.src=embed(p.video); lb.showModal();
+  if(!openFilm(c.dataset.i)) c.querySelector('.meta small').textContent="Video link coming soon";
+});
+
+/* Film strip: each tile shows a frame from a real film and opens it.
+   STRIP lists which project (its position in PROJECTS, counting from 0) goes in each tile. */
+const STRIP=[0,2,1,5,6];
+document.querySelectorAll('#strip .frame').forEach((f,k)=>{
+  const i=STRIP[k], p=PROJECTS[i]; if(!p) return;
+  const t=autoThumb(p);
+  const b=document.createElement('button'); b.type='button'; b.className=f.className;
+  b.setAttribute('aria-label',`Play ${p.title}`);
+  b.innerHTML=`${t?`<img src="${t}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}${p.len?`<em class="ftag">${p.len}</em>`:''}<span>${f.textContent}</span>`;
+  b.addEventListener('click',()=>openFilm(i));
+  f.replaceWith(b);
 });
 document.getElementById('lbclose').onclick=()=>{lb.close();};
 lb.addEventListener('close',()=>fr.src='');
 lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
 
-if(SHOWREEL){ document.getElementById('reel').innerHTML=`<iframe src="${embed(SHOWREEL).replace('autoplay=1','autoplay=0')}" title="Showreel" allow="fullscreen" allowfullscreen></iframe>`; }
+if(SHOWREEL){ const r=document.getElementById('reel'); r.classList.remove('feature'); r.innerHTML=`<iframe src="${embed(SHOWREEL).replace('autoplay=1','autoplay=0')}" title="Showreel" allow="fullscreen" allowfullscreen></iframe>`; }
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 /* ============ 3D AND MOTION ============ */
@@ -587,6 +672,49 @@ const finePointer=matchMedia('(hover: hover) and (pointer: fine)').matches;
   const io=new IntersectionObserver(entries=>entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }),{threshold:.14,rootMargin:'0px 0px -6% 0px'});
   els.forEach(e=>io.observe(e));
 })();
+
+/* Featured films screen: cycles through every project that has a video */
+(function(){
+  const box=document.getElementById('reel'); if(!box||!box.classList.contains('feature')) return;
+  const list=PROJECTS.map((p,i)=>({p,i})).filter(o=>o.p.video);
+  if(!list.length){ box.innerHTML='<div class="ph" style="height:100%;display:grid;place-items:center"><strong>Films coming soon</strong></div>'; return; }
+  box.innerHTML=list.map(({p},k)=>{ const t=autoThumb(p);
+    return `<div class="slide${p.tall?' tall':''}${k?'':' on'}">${t?`<div class="bg" style="background-image:url('${t}')"></div><img src="${t}" alt="" referrerpolicy="no-referrer" ${k?'loading="lazy"':''} onerror="this.remove()">`:''}</div>`; }).join('')
+    +`<div class="shade"></div><div class="tag"><i></i>Featured films</div>`
+    +`<div class="dots" role="group" aria-label="Choose a film">${list.map(({p},k)=>`<button type="button" aria-label="${p.title}" aria-current="${k===0}"></button>`).join('')}</div>`
+    +`<div class="cap"><div><small></small><h3></h3></div><span class="watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Watch film</span></div>`;
+  box.tabIndex=0;
+  const slides=[...box.querySelectorAll('.slide')], dots=[...box.querySelectorAll('.dots button')];
+  const sm=box.querySelector('.cap small'), h=box.querySelector('.cap h3');
+  let cur=0, timer=0, paused=false;
+  const show=k=>{ cur=(k+list.length)%list.length;
+    slides.forEach((s,j)=>s.classList.toggle('on',j===cur)); dots.forEach((d,j)=>d.setAttribute('aria-current',j===cur));
+    const p=list[cur].p; sm.textContent=`${labels[p.cat]}${p.len?' · '+p.len:''}${p.tall?' · Vertical':''}`; h.textContent=p.title;
+    box.setAttribute('aria-label',`Featured film: ${p.title}. Press Enter to watch, arrow keys to browse.`); };
+  const tick=()=>{ clearTimeout(timer); if(!reduceMotion&&!paused&&!document.hidden) timer=setTimeout(()=>{ show(cur+1); tick(); },5500); };
+  dots.forEach((d,j)=>d.addEventListener('click',e=>{ e.stopPropagation(); show(j); tick(); }));
+  box.addEventListener('click',()=>openFilm(list[cur].i));
+  box.addEventListener('keydown',e=>{ if(e.target!==box) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openFilm(list[cur].i); } else if(e.key==='ArrowRight'){ show(cur+1); tick(); } else if(e.key==='ArrowLeft'){ show(cur-1); tick(); } });
+  box.addEventListener('pointerenter',()=>{ paused=true; clearTimeout(timer); });
+  box.addEventListener('pointerleave',()=>{ paused=false; tick(); });
+  document.addEventListener('visibilitychange',tick);
+  show(0); tick();
+})();
+
+/* Thin progress bar along the top as you scroll */
+(function(){
+  const bar=document.getElementById('progress'); if(!bar) return; let raf=0;
+  const set=()=>{ raf=0; const max=document.documentElement.scrollHeight-innerHeight; bar.style.transform=`scaleX(${max>0?Math.min(1,scrollY/max):0})`; };
+  addEventListener('scroll',()=>{ if(!raf) raf=requestAnimationFrame(set); },{passive:true}); set();
+})();
+
+/* Main buttons drift toward the mouse (desktop only) */
+if(finePointer&&!reduceMotion){
+  document.querySelectorAll('.hero-cta .btn, .ways .btn, .nav .btn').forEach(b=>{
+    b.addEventListener('pointermove',e=>{ const r=b.getBoundingClientRect(); b.style.translate=`${((e.clientX-r.left)/r.width-.5)*12}px ${((e.clientY-r.top)/r.height-.5)*10}px`; });
+    b.addEventListener('pointerleave',()=>{ b.style.translate=''; });
+  });
+}
 
 /* Cards lean toward the mouse (desktop only) */
 if(finePointer&&!reduceMotion){
