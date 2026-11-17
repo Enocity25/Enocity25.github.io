@@ -338,6 +338,22 @@ form .btn{justify-content:center;margin-top:6px}
 .foot a{text-decoration:none}
 .foot a:hover{color:var(--grape)}
 
+/* character lock: reference plates */
+.cgrid{display:grid;grid-template-columns:2.37fr 1fr;gap:22px;margin-top:40px}
+.plate{margin:0;background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.plate.sheet{grid-column:1/-1}
+.plate button{display:block;width:100%;border:0;padding:0;cursor:zoom-in;background:#8E8E8E;position:relative}
+.plate.face button{aspect-ratio:16/9}.plate.outfit button{aspect-ratio:3/4}.plate.sheet button{aspect-ratio:16/8.7}
+.plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.plate.outfit img{object-position:50% 20%}
+.plate button:hover img{transform:scale(1.03)}
+.plate figcaption{padding:18px 22px 22px;color:var(--muted);font-size:15px}
+.plate figcaption b{display:flex;align-items:baseline;gap:10px;color:var(--ink);font-size:18px;margin-bottom:4px}
+.plate figcaption b i{font-style:normal;font-size:13px;font-weight:600;color:var(--coral);letter-spacing:.04em}
+@media(max-width:760px){.cgrid{grid-template-columns:1fr}}
+dialog.imgbox{width:min(1200px,94vw)}
+dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 110px);object-fit:contain;border-radius:12px;background:#8E8E8E}
+
 /* lightbox */
 dialog{border:0;padding:0;background:transparent;width:min(960px,92vw);margin:auto;overflow:visible}
 dialog.tall{width:min(420px,92vw)}
@@ -370,6 +386,7 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
     <ul>
       <li><a href="#work">Work</a></li>
       <li><a href="#process">Process</a></li>
+      <li><a href="#characters">Characters</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
     </ul>
@@ -458,6 +475,29 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
       <div class="step" data-reveal style="--d:.08s"><h3>Characters and sets</h3><p>Each character gets a reference sheet. Each location gets a plate. You approve them first, so nothing drifts later.</p></div>
       <div class="step" data-reveal style="--d:.16s"><h3>Generation</h3><p>Shots are generated with Google Veo, Seedance, Nano Banana and Higgsfield, with voice from ElevenLabs, and checked for continuity.</p></div>
       <div class="step" data-reveal style="--d:.24s"><h3>Edit and delivery</h3><p>Music, sound, titles and colour in CapCut or After Effects. You get 16:9 and 9:16 exports, with one round of revisions included.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="characters">
+  <div class="wrap">
+    <div data-reveal>
+      <h2>Characters that stay the same</h2>
+      <p class="lead" style="margin-top:12px">A look inside one project: how Dr Diana was locked before a single shot was generated.</p>
+    </div>
+    <div class="cgrid">
+      <figure class="plate face" data-reveal data-tilt="3">
+        <button type="button" data-full="https://drive.google.com/thumbnail?id=1utsw8g4IG-VHUq1NsHrP5IvoBwM9mg9o&sz=w1600" aria-label="Enlarge Dr Diana face lock"><img src="https://drive.google.com/thumbnail?id=1utsw8g4IG-VHUq1NsHrP5IvoBwM9mg9o&sz=w1600" alt="Dr Diana face lock: head and shoulders on a neutral grey background" loading="lazy" referrerpolicy="no-referrer"></button>
+        <figcaption><b><i>01</i>Face lock</b>The face is fixed first, on neutral grey, so every later image starts from the same person.</figcaption>
+      </figure>
+      <figure class="plate outfit" data-reveal data-tilt="3" style="--d:.08s">
+        <button type="button" data-full="https://drive.google.com/thumbnail?id=1CPPZ3cm5uQ5Kbx7KQlMXxKlKDTPO_WXF&sz=w1600" aria-label="Enlarge Dr Diana outfit plate"><img src="https://drive.google.com/thumbnail?id=1CPPZ3cm5uQ5Kbx7KQlMXxKlKDTPO_WXF&sz=w1600" alt="Dr Diana full-body outfit plate in a white coat and black scrubs" loading="lazy" referrerpolicy="no-referrer"></button>
+        <figcaption><b><i>02</i>Outfit plate</b>Full body in costume, head to toe.</figcaption>
+      </figure>
+      <figure class="plate sheet" data-reveal data-tilt="2">
+        <button type="button" data-full="https://drive.google.com/thumbnail?id=1mf25hA4XflSe_NDvED6t70PWfVHJiOnF&sz=w1600" aria-label="Enlarge Dr Diana character sheet"><img src="https://drive.google.com/thumbnail?id=1mf25hA4XflSe_NDvED6t70PWfVHJiOnF&sz=w1600" alt="Dr Diana character sheet: outfit front, full back view and close-up face" loading="lazy" referrerpolicy="no-referrer"></button>
+        <figcaption><b><i>03</i>Character sheet</b>Outfit front, full back view and a close-up of the face in one image. This is the reference every scene is generated from, so she looks the same in every shot.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -572,6 +612,8 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
   <span><a href="https://www.fiverr.com/s/2pQxZae" target="_blank" rel="noopener">Fiverr</a> · <a href="#">LinkedIn</a> · <a href="#">YouTube</a> · <a href="#">Privacy</a></span>
 </footer>
 
+<dialog id="imgbox" class="imgbox"><button class="close" id="imgclose">Close</button><img id="imgfull" alt=""></dialog>
+
 <dialog id="lb">
   <div class="player"><button class="close" id="lbclose">Close</button><iframe id="lbframe" title="Project video" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 </dialog>
@@ -646,6 +688,13 @@ document.querySelectorAll('#strip .frame').forEach((f,k)=>{
   f.replaceWith(b);
 });
 document.getElementById('lbclose').onclick=()=>{lb.close();};
+/* Character plates open full size */
+(function(){
+  const box=document.getElementById('imgbox'), im=document.getElementById('imgfull');
+  document.querySelectorAll('.plate button').forEach(b=>b.addEventListener('click',()=>{ im.src=b.dataset.full; im.alt=b.querySelector('img').alt; box.showModal(); }));
+  document.getElementById('imgclose').onclick=()=>box.close();
+  box.addEventListener('click',e=>{ if(e.target===box) box.close(); });
+})();
 lb.addEventListener('close',()=>fr.src='');
 lb.addEventListener('click',e=>{ if(e.target===lb) lb.close(); });
 
