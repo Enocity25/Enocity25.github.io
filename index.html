@@ -597,7 +597,9 @@ const SHOWREEL = "";   // e.g. a Drive or YouTube link to a 60-90 second reel
 const PROJECTS = [
   {cat:"ad",        title:"Dave's glow-up: a website story", blurb:"A struggling business owner gets a new website and his phone starts ringing. Vertical story ad for Untitled, a web design agency.", video:"https://drive.google.com/file/d/1BhdPEyeBt4BPeox7Bw7MkjiFDnSqczn2/view", tall:true, len:"1:07"},
   {cat:"explainer", title:"'Over Coffee': TWS partner intro", blurb:"Two partners talk business over coffee in a town square. Dutch-language explainer for TWS Projects.", video:"https://drive.google.com/file/d/1zGHEjYV2qfdEnyO75XUhrsn-aErEXlqn/view", len:"1:18"},
+  {cat:"story",     title:"How we met: a wedding story", blurb:"A couple's love story, from first messages and everyday moments to snowy trips and a seaside wedding.", video:"https://drive.google.com/file/d/1U4bq6U7ccivZJiboGPL8jB5kfrDo0NA_/view", len:"3:27"},
   {cat:"ad",        title:"Dr Jet: the founders' story", blurb:"Two friends leave dead-end routines behind and open their own car detailing clinic. Vertical brand story for Dr Jet Detailing Clinic.", video:"https://drive.google.com/file/d/1OnV9gcIDGU9snR8GYbBz3ZLCY57pbVlC/view", tall:true, len:"1:38"},
+  {cat:"ad",        title:"Colorado: a home of your own", blurb:"Teachers and everyday workers in Colorado find a path to buying a home. Vertical ad for a mortgage loan originator.", video:"https://drive.google.com/file/d/1K5-8oAGVk2mtwTgn4IiTqjq0fcgpXa1u/view", tall:true, len:"0:31"},
   {cat:"ad",        title:"Skincare serum story", blurb:"A tired woman with dark circles gets her glow back with a collagen serum, guided by a skincare expert. Vertical story ad.", video:"https://drive.google.com/file/d/1GpuWcGFrJWYRMBhnt9S1Uw10WOSkYz-D/view", tall:true, len:"5:23"},
   {cat:"ad",        title:"Fitness at home, no gym needed", blurb:"An older woman who feels the gym isn't for her tries a vibration plate at home. Vertical product ad in Danish.", video:"https://drive.google.com/file/d/1JoT5x7s7oZ090P8sXWVOhA3SbbMMDH0Z/view", tall:true, len:"0:55"},
   {cat:"story",     title:"A day with Marilyn's Moment", blurb:"A creator's day, from morning prayer to filming, made as a promo for her YouTube channel.", video:"https://drive.google.com/file/d/1gchnvMinABy6Mc0HZ2YzCt6ofxaZfTMx/view", tall:true, len:"0:46"},
@@ -642,7 +644,7 @@ grid.addEventListener('click',e=>{
 
 /* Film strip: each tile shows a frame from a real film and opens it.
    STRIP lists which project (its position in PROJECTS, counting from 0) goes in each tile. */
-const STRIP=[0,2,1,5,6];
+const STRIP=[0,3,1,2,8];
 document.querySelectorAll('#strip .frame').forEach((f,k)=>{
   const i=STRIP[k], p=PROJECTS[i]; if(!p) return;
   const t=autoThumb(p);
