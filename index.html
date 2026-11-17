@@ -171,7 +171,9 @@ header{position:sticky;top:0;z-index:20;background:rgba(243,243,243,.82);backdro
 .card .thumb::before,.card .thumb::after{content:"";position:absolute;border-radius:50%}
 .card .thumb::before{width:48%;aspect-ratio:1;right:-10%;top:-26%;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.75),rgba(255,255,255,.12) 56%,transparent 70%)}
 .card .thumb::after{width:30%;aspect-ratio:1;left:6%;bottom:-16%;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.55),rgba(255,255,255,.08) 60%,transparent 72%)}
-.card .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.card .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;z-index:1;transition:transform .6s var(--ease)}
+.card:hover .thumb img{transform:scale(1.05)}
+.card .thumb .dur{position:absolute;right:10px;bottom:10px;z-index:2;background:rgba(28,30,34,.78);color:#fff;font-size:12px;font-weight:600;padding:3px 8px;border-radius:999px}
 .card .thumb .playbtn{width:54px;height:54px;position:relative;z-index:2}
 .card .thumb .playbtn svg{width:18px;height:18px}
 .card:hover .playbtn{transform:scale(1.14)}
@@ -270,6 +272,8 @@ form .btn{justify-content:center;margin-top:6px}
 
 /* lightbox */
 dialog{border:0;padding:0;background:transparent;width:min(960px,92vw);margin:auto;overflow:visible}
+dialog.tall{width:min(420px,92vw,calc((100vh - 120px) * 9 / 16))}
+dialog.tall .player{aspect-ratio:9/16}
 dialog::backdrop{background:rgba(28,30,34,.9)}
 dialog .player{box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative;overflow:visible;padding:0}
 dialog .player iframe{border-radius:var(--r)}
@@ -371,7 +375,7 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
         <button aria-pressed="false" data-filter="ad">Story ads</button>
         <button aria-pressed="false" data-filter="explainer">Explainers</button>
         <button aria-pressed="false" data-filter="story">Personal stories</button>
-        <button aria-pressed="false" data-filter="kids">Kids</button>
+        <button aria-pressed="false" data-filter="series">Series</button>
         <button aria-pressed="false" data-filter="auto">Automation</button>
       </div>
     </div>
@@ -507,29 +511,42 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
 </footer>
 
 <dialog id="lb">
-  <div class="player"><button class="close" id="lbclose">Close</button><iframe id="lbframe" title="Project video" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+  <div class="player"><button class="close" id="lbclose">Close</button><iframe id="lbframe" title="Project video" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 </dialog>
 
 <script>
 /* ============ PROJECTS — add a video by adding one entry ============
    cat:   ad | explainer | story | kids | series | auto
-   video: YouTube or Vimeo link (watch URL is fine), or "" for a placeholder
-   thumb: image URL (optional)                                            */
-const SHOWREEL = "";   // e.g. "https://vimeo.com/123456789"
+   video: Google Drive, YouTube or Vimeo link, or "" for a placeholder.
+          Drive files must be shared as "Anyone with the link can view".
+   tall:  true for vertical 9:16 videos (the player opens tall)
+   len:   running time shown on the card, e.g. "1:07"
+   thumb: image URL (optional; Drive and YouTube links get one automatically) */
+const SHOWREEL = "";   // e.g. a Drive or YouTube link to a 60-90 second reel
 const PROJECTS = [
-  {cat:"ad",        title:"Story ad for a web design agency", blurb:"60-second animated story from the client's script and storyboard.", video:"", thumb:""},
-  {cat:"explainer", title:"'Over Coffee': TWS partner intro", blurb:"Business explainer with Dutch dialogue, featuring the company founder.", video:"", thumb:""},
-  {cat:"story",     title:"How we met: a wedding story", blurb:"A couple's journey from first meeting to the wedding day.", video:"", thumb:""},
-  {cat:"series",    title:"Scavenger Hunt, Ep 101", blurb:"3D-animated horror TV episode. AI direction and prompt engineering.", video:"", thumb:""},
-  {cat:"kids",      title:"My Wonderful Body!", blurb:"Pilot episode for a children's educational series.", video:"", thumb:""},
-  {cat:"explainer", title:"The Workaround", blurb:"Workplace story about why teams quietly stay on Excel after an ERP upgrade.", video:"", thumb:""},
-  {cat:"auto",      title:"Vendor pricing pipeline", blurb:"n8n and Apps Script match 48 supplier price lists to a master database by part number.", video:"", thumb:""},
-  {cat:"auto",      title:"Receipts that file themselves", blurb:"Gmail to Google Sheets with AI reading each receipt, via n8n.", video:"", thumb:""},
+  {cat:"ad",        title:"Dave's glow-up: a website story", blurb:"A struggling business owner gets a new website and his phone starts ringing. Vertical story ad for Untitled, a web design agency.", video:"https://drive.google.com/file/d/1BhdPEyeBt4BPeox7Bw7MkjiFDnSqczn2/view", tall:true, len:"1:07"},
+  {cat:"explainer", title:"'Over Coffee': TWS partner intro", blurb:"Two partners talk business over coffee in a town square. Dutch-language explainer for TWS Projects.", video:"https://drive.google.com/file/d/1zGHEjYV2qfdEnyO75XUhrsn-aErEXlqn/view", len:"1:18"},
+  {cat:"ad",        title:"Dr Jet: the founders' story", blurb:"Two friends leave dead-end routines behind and open their own car detailing clinic. Vertical brand story for Dr Jet Detailing Clinic.", video:"https://drive.google.com/file/d/1OnV9gcIDGU9snR8GYbBz3ZLCY57pbVlC/view", tall:true, len:"1:38"},
+  {cat:"ad",        title:"Skincare serum story", blurb:"A tired woman with dark circles gets her glow back with a collagen serum, guided by a skincare expert. Vertical story ad.", video:"https://drive.google.com/file/d/1GpuWcGFrJWYRMBhnt9S1Uw10WOSkYz-D/view", tall:true, len:"5:23"},
+  {cat:"ad",        title:"Fitness at home, no gym needed", blurb:"An older woman who feels the gym isn't for her tries a vibration plate at home. Vertical product ad in Danish.", video:"https://drive.google.com/file/d/1JoT5x7s7oZ090P8sXWVOhA3SbbMMDH0Z/view", tall:true, len:"0:55"},
+  {cat:"story",     title:"A day with Marilyn's Moment", blurb:"A creator's day, from morning prayer to filming, made as a promo for her YouTube channel.", video:"https://drive.google.com/file/d/1gchnvMinABy6Mc0HZ2YzCt6ofxaZfTMx/view", tall:true, len:"0:46"},
+  {cat:"series",    title:"Sister Girl, Ep 2: The Money Talk", blurb:"Four friends finally have the money conversation nobody wants. Episode from an animated series.", video:"https://drive.google.com/file/d/1gpUbipUSHnypTJMZjDhwf69e8cytPxUZ/view", len:"0:51"},
+  {cat:"auto",      title:"Vendor pricing pipeline", blurb:"n8n and Apps Script match 48 supplier price lists to a master database by part number.", video:""},
+  {cat:"auto",      title:"Receipts that file themselves", blurb:"Gmail to Google Sheets with AI reading each receipt, via n8n.", video:""},
 ];
 
 const labels={ad:"Story ad",explainer:"Explainer",story:"Personal story",kids:"Kids",series:"Series",auto:"Automation"};
+const driveId=url=>{ const m=(url||"").match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=)([\w-]{20,})/); return m?m[1]:""; };
+const ytId=url=>{ const m=(url||"").match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/); return m?m[1]:""; };
+function autoThumb(p){
+  if(p.thumb) return p.thumb;
+  let id=driveId(p.video); if(id) return `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
+  id=ytId(p.video); if(id) return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+  return "";
+}
 function embed(url){
   if(!url) return "";
+  let d=driveId(url); if(d) return `https://drive.google.com/file/d/${d}/preview`;
   let m=url.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/); if(m) return `https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0`;
   m=url.match(/vimeo\.com\/(?:video\/)?(\d+)/); if(m) return `https://player.vimeo.com/video/${m[1]}?autoplay=1`;
   return url;
@@ -537,7 +554,7 @@ function embed(url){
 const grid=document.getElementById('grid');
 grid.innerHTML=PROJECTS.map((p,i)=>`
   <button class="card ${p.cat}" data-cat="${p.cat}" data-i="${i}" data-tilt="7" type="button">
-    <div class="thumb">${p.thumb?`<img src="${p.thumb}" alt="">`:""}<div class="playbtn"><svg viewBox="0 0 24 24" fill="#1C1E22" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
+    <div class="thumb">${autoThumb(p)?`<img src="${autoThumb(p)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:""}${p.len?`<span class="dur">${p.len}</span>`:""}<div class="playbtn"><svg viewBox="0 0 24 24" fill="#1C1E22" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
     <div class="meta"><small>${labels[p.cat]}</small><h3>${p.title}</h3><p>${p.blurb}</p></div>
   </button>`).join('');
 
@@ -552,7 +569,7 @@ grid.addEventListener('click',e=>{
   const c=e.target.closest('.card'); if(!c) return;
   const p=PROJECTS[c.dataset.i];
   if(!p.video){ c.querySelector('.meta small').textContent="Video link coming soon"; return; }
-  fr.src=embed(p.video); lb.showModal();
+  lb.classList.toggle('tall',!!p.tall); fr.src=embed(p.video); lb.showModal();
 });
 document.getElementById('lbclose').onclick=()=>{lb.close();};
 lb.addEventListener('close',()=>fr.src='');
