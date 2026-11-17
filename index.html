@@ -186,7 +186,6 @@ header{position:sticky;top:0;z-index:20;background:rgba(243,243,243,.82);backdro
 .card.story .thumb{background:radial-gradient(120% 100% at 15% 0%,#c9bbff,var(--grape))}
 .card.kids .thumb{background:radial-gradient(120% 100% at 15% 0%,#ffe49a,var(--sun))}
 .card.series .thumb{background:radial-gradient(120% 100% at 15% 0%,#b8e0ff,var(--sky))}
-.card.auto .thumb{background:radial-gradient(120% 100% at 15% 0%,#4a4660,var(--ink))}
 .card.hidden{display:none}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
@@ -376,7 +375,6 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
         <button aria-pressed="false" data-filter="explainer">Explainers</button>
         <button aria-pressed="false" data-filter="story">Personal stories</button>
         <button aria-pressed="false" data-filter="series">Series</button>
-        <button aria-pressed="false" data-filter="auto">Automation</button>
       </div>
     </div>
     <div class="grid" id="grid" data-reveal></div>
@@ -416,14 +414,16 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
         <a class="btn btn-ink" href="https://wa.me/2348150669604?text=Hi%20Enoch%2C%20I%27d%20like%20a%20quote%20for%20an%20animated%20film." target="_blank" rel="noopener">Get a quote</a>
       </div>
       <div class="svc" data-tilt="4">
-        <h3>Automation with n8n</h3>
-        <p class="lead">For teams whose spreadsheets, inboxes and documents should run themselves.</p>
+        <h3>Every film includes</h3>
+        <p class="lead">The full production, from first idea to final export.</p>
         <ul>
-          <li>Google Sheets pipelines and reports</li>
-          <li>Email and receipt processing with AI</li>
-          <li>Apps Script tools for e-commerce exports</li>
+          <li>Character reference sheets, locked before any shot</li>
+          <li>Scene and location plates you approve first</li>
+          <li>Voice, music, sound and colour</li>
+          <li>16:9 and 9:16 exports</li>
+          <li>One round of revisions</li>
         </ul>
-        <a class="btn btn-ghost" href="https://wa.me/2348150669604?text=Hi%20Enoch%2C%20I%27d%20like%20help%20with%20an%20automation." target="_blank" rel="noopener">Talk about an automation</a>
+        <a class="btn btn-ghost" href="#process">See how it works</a>
       </div>
     </div>
   </div>
@@ -469,9 +469,9 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
     <div data-reveal style="--d:.1s">
       <p class="lead">I'm an AI video creator making Pixar-style 3D animated films for clients who have a story to tell but no animation studio to tell it.</p>
       <p>I work from a script, a storyboard or just an idea, and take it through character design, scene planning, generation and editing until it's a finished film. Recent work includes a 60-second story ad for a design agency, a Dutch-language business explainer, a 3D-animated TV horror episode, a couple's wedding story, and educational series for children and for workplaces.</p>
-      <p>Every character is locked with reference sheets before a single shot is generated, so faces, outfits and sets stay consistent from the first scene to the last. I also build n8n and Google Apps Script automations for teams that want their spreadsheets, email and documents to run themselves.</p>
+      <p>Every character is locked with reference sheets before a single shot is generated, so faces, outfits and sets stay consistent from the first scene to the last.</p>
       <div class="tools">
-        <span>Google Veo 3.1</span><span>Google Flow</span><span>Nano Banana Pro</span><span>Seedance 2.0</span><span>Gemini Omni Flash</span><span>ElevenLabs</span><span>CapCut</span><span>After Effects</span><span>n8n</span><span>Apps Script</span>
+        <span>Google Veo 3.1</span><span>Google Flow</span><span>Nano Banana Pro</span><span>Seedance 2.0</span><span>Gemini Omni Flash</span><span>ElevenLabs</span><span>CapCut</span><span>After Effects</span>
       </div>
     </div>
   </div>
@@ -516,7 +516,7 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--white);border
 
 <script>
 /* ============ PROJECTS — add a video by adding one entry ============
-   cat:   ad | explainer | story | kids | series | auto
+   cat:   ad | explainer | story | kids | series
    video: Google Drive, YouTube or Vimeo link, or "" for a placeholder.
           Drive files must be shared as "Anyone with the link can view".
    tall:  true for vertical 9:16 videos (the player opens tall)
@@ -531,11 +531,9 @@ const PROJECTS = [
   {cat:"ad",        title:"Fitness at home, no gym needed", blurb:"An older woman who feels the gym isn't for her tries a vibration plate at home. Vertical product ad in Danish.", video:"https://drive.google.com/file/d/1JoT5x7s7oZ090P8sXWVOhA3SbbMMDH0Z/view", tall:true, len:"0:55"},
   {cat:"story",     title:"A day with Marilyn's Moment", blurb:"A creator's day, from morning prayer to filming, made as a promo for her YouTube channel.", video:"https://drive.google.com/file/d/1gchnvMinABy6Mc0HZ2YzCt6ofxaZfTMx/view", tall:true, len:"0:46"},
   {cat:"series",    title:"Sister Girl, Ep 2: The Money Talk", blurb:"Four friends finally have the money conversation nobody wants. Episode from an animated series.", video:"https://drive.google.com/file/d/1gpUbipUSHnypTJMZjDhwf69e8cytPxUZ/view", len:"0:51"},
-  {cat:"auto",      title:"Vendor pricing pipeline", blurb:"n8n and Apps Script match 48 supplier price lists to a master database by part number.", video:""},
-  {cat:"auto",      title:"Receipts that file themselves", blurb:"Gmail to Google Sheets with AI reading each receipt, via n8n.", video:""},
 ];
 
-const labels={ad:"Story ad",explainer:"Explainer",story:"Personal story",kids:"Kids",series:"Series",auto:"Automation"};
+const labels={ad:"Story ad",explainer:"Explainer",story:"Personal story",kids:"Kids",series:"Series"};
 const driveId=url=>{ const m=(url||"").match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=)([\w-]{20,})/); return m?m[1]:""; };
 const ytId=url=>{ const m=(url||"").match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/); return m?m[1]:""; };
 function autoThumb(p){
