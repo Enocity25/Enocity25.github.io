@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enoch A — Pixar-style AI animated films</title>
-<meta name="description" content="Enoch A makes Pixar-style 3D animated films with AI: story ads, brand films, explainers, wedding stories and series episodes, from your script to a finished film.">
+<title>Enoch A — AI animated films in every style</title>
+<meta name="description" content="Enoch A makes AI animated films in Pixar-style 3D, realistic and cinematic, 2D cartoon, anime, claymation and other stylised looks: story ads, brand films, explainers, wedding stories and series episodes, from your script to a finished film.">
 <meta name="theme-color" content="#1C1E22">
 <link rel="canonical" href="https://enocity25.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -10 174 190'%3E%3Cpath fill='%231C1E22' d='M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://enocity25.github.io/">
-<meta property="og:title" content="Enoch A — Pixar-style AI animated films">
+<meta property="og:title" content="Enoch A — AI animated films in every style">
 <meta property="og:description" content="Story ads, brand films, explainers, wedding stories and series episodes, made with AI from your script to a finished film.">
 <meta property="og:image" content="https://enocity25.github.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://enocity25.github.io/og.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Enoch A","description":"Pixar-style 3D animated films made with AI: story ads, brand films, explainers, wedding stories and series episodes, from script to finished film.","url":"https://enocity25.github.io/","image":"https://enocity25.github.io/og.png","founder":{"@type":"Person","name":"Agboola Enoch Samuel"},"sameAs":["https://www.fiverr.com/s/2pQxZae"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Enoch A","description":"AI animated films in Pixar-style 3D, realistic and cinematic, 2D cartoon, anime, claymation and other stylised looks: story ads, brand films, explainers, wedding stories and series episodes, from script to finished film.","url":"https://enocity25.github.io/","image":"https://enocity25.github.io/og.png","founder":{"@type":"Person","name":"Agboola Enoch Samuel"},"sameAs":["https://www.fiverr.com/s/2pQxZae"]}</script>
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,12 +88,21 @@ header.solid{background:rgba(243,243,243,.92);color:var(--ink);border-color:var(
 .hero .glow{position:absolute;inset:0;overflow:hidden}
 .hero .glow img{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;filter:blur(60px) brightness(.32) saturate(.8);opacity:0;transition:opacity 1.4s ease}
 .hero .glow img.on{opacity:1}
-.window{position:absolute;right:max(24px,calc((100% - var(--maxw)) / 2));top:96px;height:min(calc(100svh - 340px),660px);aspect-ratio:150/170;
-  -webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;background:#26272c}
-.window img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:0;transition:opacity 1.2s ease;transform:scale(1.08)}
+/* 3D window: the unchanged E, given depth by stacked green layers behind it (built in the script) */
+.e3d{position:relative;aspect-ratio:150/170;transform-style:preserve-3d;transform:perspective(1400px) rotateX(-4deg) rotateY(20deg);will-change:transform}
+.e3d .ly{position:absolute;inset:0;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;background:var(--c);transform:translateZ(var(--z))}
+.e3d .halo{position:absolute;inset:-30%;background:radial-gradient(closest-side,rgba(47,122,85,.5),rgba(47,122,85,.12) 55%,transparent 75%);transform:translateZ(-90px);pointer-events:none}
+.e3d .edge{position:absolute;inset:0;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;background:var(--green-light);transform:translateZ(-1px)}
+.hero-e{position:absolute;right:max(40px,calc((100% - var(--maxw)) / 2 + 20px));top:96px;height:min(calc(100svh - 340px),660px);z-index:1}
+.window{position:absolute;inset:0;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;background:#26272c;transform:translateZ(0)}
+.window img{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:50% 30%;opacity:0;transition:opacity 1.2s ease;scale:1.06;transform:translate3d(var(--px,0px),var(--py,0px),0)}
 .window img.on{opacity:1;animation:push 6s ease-out forwards}
-@keyframes push{from{transform:scale(1.08)}to{transform:scale(1.18)}}
+@keyframes push{from{scale:1.06}to{scale:1.16}}
 .hero .content{position:relative;z-index:2}
+.js .hero .content>*{animation:rise 1.1s var(--ease) both}
+.js .hero .content>*:nth-child(2){animation-delay:.12s}.js .hero .content>*:nth-child(3){animation-delay:.24s}.js .hero .content>*:nth-child(4){animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
 .hero h1{font-size:clamp(46px,7vw,112px);max-width:9.6ch;color:var(--paper)}
 .hero h1 span{color:var(--green-light)}
 .hero .sub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;margin-top:40px;padding-top:26px;border-top:1px solid var(--line-d)}
@@ -104,7 +113,7 @@ header.solid{background:rgba(243,243,243,.92);color:var(--ink);border-color:var(
 .hero .now{position:absolute;right:max(24px,calc((100% - var(--maxw)) / 2));top:calc(96px + min(calc(100svh - 340px),660px) + 12px);color:var(--muted-d);z-index:2;background:none;border:0;cursor:pointer;text-align:right}
 .hero .now:hover{color:var(--paper)}
 @media(max-width:900px){
-  .window{position:relative;right:auto;top:auto;height:auto;width:min(56vw,360px);margin:0 auto 26px}
+  .hero-e{position:relative;right:auto;top:auto;height:auto;width:min(54vw,340px);margin:0 auto 30px}
   .hero{justify-content:flex-start;padding-top:96px}
   .hero .now{position:static;display:block;margin:-14px auto 22px;padding:0 24px;text-align:center;font-size:11px;line-height:1.5;max-width:100%}
   .hero .sub{grid-template-columns:1fr;gap:22px}
@@ -197,6 +206,10 @@ section.block{padding:clamp(80px,10vw,150px) 0}
 .row .mono{color:var(--muted)}
 .row h3{font-size:clamp(22px,2.6vw,36px);letter-spacing:-.025em}
 .row span:last-child{color:var(--muted)}
+.styles{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:34px}
+.styles .mono{color:var(--muted);margin-right:6px}
+.styles .st{padding:9px 14px;border:1px solid var(--ink);border-radius:2px;font-size:15px;font-weight:500;transition:background .25s,color .25s,border-color .25s}
+.styles .st:hover{background:var(--green);border-color:var(--green);color:#fff}
 .included{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;color:var(--muted)}
 .included b{color:var(--ink);font-weight:500}
 @media(max-width:700px){.row{grid-template-columns:50px 1fr}.row span:last-child{grid-column:2}}
@@ -223,7 +236,7 @@ section.block{padding:clamp(80px,10vw,150px) 0}
 /* ---------- contact ---------- */
 .contact{padding:clamp(90px,11vw,160px) 0 0}
 .contact h2{font-size:clamp(54px,11vw,170px);line-height:.9}
-.contact h2 span{color:var(--green-light)}
+.contact h2 .hl{color:var(--green-light)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);margin-top:clamp(48px,6vw,80px);padding-top:30px;border-top:1px solid var(--line-d)}
 .contact .lead{color:#C9CBD0;font-size:clamp(17px,1.4vw,19px)}
 .ways{display:grid;gap:12px;margin-top:30px;max-width:420px}
@@ -256,13 +269,85 @@ dialog .close{position:absolute;top:-48px;right:0;background:var(--paper);color:
 dialog.imgbox{width:min(1200px,94vw)}
 dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 110px);object-fit:contain;background:#8e8e8e}
 
+/* ---------- moving ribbons between sections ---------- */
+.ribbons{position:relative;height:clamp(130px,15vw,200px);background:linear-gradient(var(--ink) 50%,var(--paper) 50%);overflow:hidden}
+.rb{position:absolute;left:-6%;right:-6%;top:50%;padding:clamp(12px,1.4vw,18px) 0;white-space:nowrap;overflow:hidden}
+.rb1{background:var(--green);color:#fff;transform:translateY(-50%) rotate(-3deg);z-index:2;box-shadow:0 18px 40px -18px rgba(0,0,0,.5)}
+.rb2{background:var(--green-light);color:var(--ink);transform:translateY(-50%) rotate(2.4deg)}
+.trk{display:inline-flex;align-items:center;gap:clamp(18px,2vw,30px);animation:mq 46s linear infinite;padding-right:clamp(18px,2vw,30px)}
+.rb2 .trk{animation-direction:reverse;animation-duration:58s}
+.trk b{font-weight:700;font-size:clamp(20px,2.5vw,36px);letter-spacing:-.01em;text-transform:uppercase}
+.trk svg{width:clamp(16px,1.6vw,24px);height:auto;flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- green section ---------- */
+.green{background:var(--green-deep,#1F5139);color:var(--paper);position:relative;overflow:hidden}
+.green .sec-head{border-color:rgba(243,243,243,.18)}
+.green .sec-head .num,.green .sec-head p{color:#B5D6C4}
+.green .steps{border-color:rgba(243,243,243,.18);counter-reset:st}
+.green .step+.step{border-color:rgba(243,243,243,.18)}
+.green .step:nth-child(n+3){border-top-color:rgba(243,243,243,.18)}
+.green .step p{color:#C6DDD0}
+.green .step .mono{color:var(--green-light)}
+.green .step{transition:background .4s,transform .5s var(--ease)}
+.green .step:hover{background:rgba(255,255,255,.05);transform:translateY(-6px)}
+.green .step::before{content:counter(st,decimal-leading-zero);counter-increment:st;display:block;font-size:clamp(64px,7vw,112px);font-weight:700;line-height:.9;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.2px rgba(140,203,168,.55);margin-bottom:18px}
+.green .step h3{margin-top:18px}
+.green::before{content:"";position:absolute;right:-20vw;top:-30vw;width:70vw;height:70vw;border-radius:50%;background:radial-gradient(closest-side,rgba(140,203,168,.16),transparent);pointer-events:none}
+
+/* ---------- soft green light in dark sections ---------- */
+section.block{position:relative}
+.dark.block{overflow:hidden}
+.dark.block::before{content:"";position:absolute;width:64vw;height:64vw;border-radius:50%;background:radial-gradient(closest-side,rgba(47,122,85,.24),transparent);pointer-events:none;animation:float 20s ease-in-out infinite alternate}
+#characters::before{left:-24vw;top:10%}
+#reviews::before{right:-22vw;top:-20%}
+@keyframes float{to{transform:translate(6vw,8vh) scale(1.12)}}
+
+/* ---------- services rows fill with green ---------- */
+.row{position:relative;isolation:isolate}
+.row::before{content:"";position:absolute;inset:0 -18px;background:var(--green);transform:scaleY(0);transform-origin:50% 100%;transition:transform .45s var(--ease);z-index:-1;border-radius:2px}
+.row:hover::before{transform:scaleY(1)}
+.row:hover,.row:hover .mono,.row:hover span:last-child{color:#fff}
+.row h3{transition:transform .45s var(--ease)}
+.row:hover h3{transform:translateX(10px)}
+
+/* ---------- film tags in muted category colours ---------- */
+.card[data-cat=ad] .tag{background:#B9654F}.card[data-cat=explainer] .tag{background:#3D7F78}.card[data-cat=story] .tag{background:#4E4775}.card[data-cat=series] .tag{background:#557894}.card[data-cat=kids] .tag{background:#9C7A33}
+.filters button[aria-pressed=true]{border-color:var(--green);color:var(--green)}
+
+/* ---------- 3D tilt on thumbnails and plates ---------- */
+.card .thumb,.plate button{transform:perspective(900px) rotateX(var(--tx,0deg)) rotateY(var(--ty,0deg));transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.card:hover .thumb{box-shadow:0 34px 60px -30px rgba(28,30,34,.6)}
+.plate button:hover{box-shadow:0 34px 60px -30px rgba(0,0,0,.8)}
+.card .thumb::after,.plate button::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.22),transparent 45%);opacity:0;transition:opacity .4s;pointer-events:none;z-index:1}
+.card:hover .thumb::after,.plate button:hover::after{opacity:1}
+
+/* ---------- featured film tilts up into place on scroll ---------- */
+.feature{transform:perspective(1400px) rotateX(var(--fr,0deg)) scale(var(--fs,1));transform-origin:50% 100%;box-shadow:0 50px 90px -50px rgba(0,0,0,.9)}
+
+/* ---------- headings slide up line by line ---------- */
+.ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.ln>span{display:inline-block;transform:translateY(108%);transition:transform 1.15s var(--ease)}
+.in .ln>span{transform:none}
+
+/* ---------- play cursor ---------- */
+.cursor{position:fixed;left:0;top:0;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;pointer-events:none;z-index:85;transform:scale(0)}
+
+/* about: small 3D window */
+.about-e{width:min(100%,380px)}
+.about .about-e .window-sm{position:absolute;inset:0;width:auto;transform:translateZ(0)}
+@media(max-width:860px){.about-e{width:220px}}
+
 /* reveal on scroll */
-.js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform 1s var(--ease);transition-delay:var(--d,0s)}
+.js :where([data-reveal]:not(.sec-head):not(h2)){opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform 1s var(--ease);transition-delay:var(--d,0s)}
 .js [data-reveal].in{opacity:1;transform:none}
+.js .sec-head[data-reveal] .num,.js .sec-head[data-reveal] p,.js .sec-head[data-reveal]>a{opacity:0;transition:opacity 1s ease .25s}
+.js .sec-head.in .num,.js .sec-head.in p,.js .sec-head.in>a{opacity:1}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
-  .js [data-reveal]{opacity:1;transform:none}
+  .js [data-reveal],.js .sec-head[data-reveal] *{opacity:1!important;transform:none!important}
+  .ln>span{transform:none}
 }
 </style>
 </head>
@@ -289,13 +374,13 @@ dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 1
 <!-- HERO: the E mark is a window onto frames from the films -->
 <section class="hero">
   <div class="glow" id="glow" aria-hidden="true"></div>
-  <div class="window" id="window" aria-hidden="true"></div>
+  <div class="e3d hero-e" id="e3d" aria-hidden="true"><div class="window" id="window"></div></div>
   <button type="button" class="now mono" id="nowbtn">Now showing: —</button>
   <div class="wrap content">
-    <p class="mono" style="color:var(--muted-d);margin-bottom:22px">Enoch A — Pixar-style 3D animation, made with AI</p>
+    <p class="mono" style="color:var(--muted-d);margin-bottom:22px">Enoch A — AI animation in 3D, realistic, 2D, anime and claymation styles</p>
     <h1>Animated films for stories that deserve a <span>studio.</span></h1>
     <div class="sub">
-      <p>Story ads, brand films, explainers, wedding stories and series episodes. From your script to a finished film, usually in days rather than months.</p>
+      <p>Story ads, brand films, explainers, wedding stories and series episodes, in the style that fits your story: Pixar-style 3D, realistic and cinematic, 2D cartoon, anime or claymation. From your script to a finished film, usually in days rather than months.</p>
       <div class="acts">
         <a class="btn btn-green" href="https://wa.me/2348150669604?text=Hi%20Enoch%2C%20I%27d%20like%20to%20talk%20about%20an%20animated%20video." target="_blank" rel="noopener">Start on WhatsApp <i>→</i></a>
         <a class="btn btn-line" href="#work">See the work <i>↓</i></a>
@@ -329,6 +414,12 @@ dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 1
     </div>
   </div>
 </section>
+
+<!-- RIBBONS -->
+<div class="ribbons" aria-hidden="true">
+  <div class="rb rb2"><div class="trk"><b>Pixar-style 3D</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Realistic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Cinematic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>2D cartoon</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Anime</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Claymation</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Stylised</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Pixar-style 3D</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Realistic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Cinematic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>2D cartoon</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Anime</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Claymation</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Stylised</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Pixar-style 3D</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Realistic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Cinematic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>2D cartoon</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Anime</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Claymation</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Stylised</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Pixar-style 3D</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Realistic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Cinematic</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>2D cartoon</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Anime</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Claymation</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Stylised</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg></div></div>
+  <div class="rb rb1"><div class="trk"><b>Story ads</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Brand films</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Explainers</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Wedding stories</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Series episodes</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Kids' animation</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Story ads</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Brand films</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Explainers</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Wedding stories</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Series episodes</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg><b>Kids' animation</b><svg viewBox="0 0 150 170"><path fill="currentColor" d="M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z"/></svg></div></div>
+</div>
 
 <!-- WORK -->
 <section class="block light" id="work">
@@ -377,7 +468,7 @@ dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 1
 </section>
 
 <!-- PROCESS -->
-<section class="block light" id="process">
+<section class="block green" id="process">
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <div><span class="num mono">03 — Process</span><h2>How a film gets made</h2></div>
@@ -393,7 +484,7 @@ dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 1
 </section>
 
 <!-- SERVICES -->
-<section class="block light" id="services" style="padding-top:0">
+<section class="block light" id="services">
   <div class="wrap">
     <div class="sec-head" data-reveal>
       <div><span class="num mono">04 — Services</span><h2>What I make</h2></div>
@@ -406,6 +497,7 @@ dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 1
       <div class="row"><span class="mono">04</span><h3>Children's episodes</h3><span>And picture-book adaptations</span></div>
       <div class="row"><span class="mono">05</span><h3>Series work</h3><span>Episodes, continuity and character bibles</span></div>
     </div>
+    <div class="styles" data-reveal><span class="mono">Styles —</span><span class="st">Pixar-style 3D</span><span class="st">Realistic &amp; cinematic</span><span class="st">2D cartoon</span><span class="st">Anime</span><span class="st">Claymation</span><span class="st">Storybook &amp; stylised</span></div>
     <div class="included mono" data-reveal><b>Every film includes:</b><span>Character sheets</span><span>Location plates</span><span>Voice, music and sound</span><span>16:9 + 9:16 exports</span><span>One revision round</span></div>
   </div>
 </section>
@@ -431,11 +523,12 @@ dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 1
   <div class="wrap about">
     <div data-reveal>
       <span class="mono" style="color:var(--muted);display:block;margin-bottom:18px">06 — About</span>
-      <div class="window-sm" aria-hidden="true"><img src="https://drive.google.com/thumbnail?id=1OnV9gcIDGU9snR8GYbBz3ZLCY57pbVlC&sz=w1200" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
+      <div class="e3d about-e" aria-hidden="true"><div class="window-sm"><img src="https://drive.google.com/thumbnail?id=1OnV9gcIDGU9snR8GYbBz3ZLCY57pbVlC&sz=w1200" alt="" loading="lazy" referrerpolicy="no-referrer"></div></div>
     </div>
     <div class="body" data-reveal style="--d:.08s">
-      <p class="lead">I'm Enoch. I make Pixar-style 3D animated films for people who have a story to tell but no animation studio to tell it.</p>
+      <p class="lead">I'm Enoch. I make AI animated films for people who have a story to tell but no animation studio to tell it.</p>
       <p>I work from a script, a storyboard or just an idea, and take it through character design, scene planning, generation and editing until it's a finished film. Recent work includes story ads for a web design agency, a dental clinic and a car detailing clinic, a Dutch-language business explainer, a couple's wedding story and episodes for an animated series.</p>
+      <p>I work across styles: Pixar-style 3D, realistic and cinematic, 2D cartoon, anime, claymation and other stylised looks. We pick the one that suits your story and audience before anything is made.</p>
       <p>Every character is locked with reference sheets before a single shot is generated, so faces, outfits and sets stay consistent from the first scene to the last.</p>
       <p class="tools mono"><b>Tools —</b> Google Veo 3.1 / Google Flow / Nano Banana Pro / Seedance 2.0 / Gemini Omni Flash / Higgsfield / Blender / ElevenLabs / CapCut / After Effects</p>
     </div>
@@ -446,7 +539,7 @@ dialog.imgbox img{display:block;width:100%;height:auto;max-height:calc(100vh - 1
 <section class="dark contact" id="contact">
   <div class="wrap">
     <span class="mono" style="color:var(--muted-d);display:block;margin-bottom:22px" data-reveal>07 — Contact</span>
-    <h2 data-reveal>Let's make it a <span>film.</span></h2>
+    <h2 data-reveal>Let's make it a <span class="hl">film.</span></h2>
     <div class="contact-grid">
       <div data-reveal>
         <p class="lead">Send a script, a rough idea or a reference video. I'll reply with a plan, a timeline and a quote, usually within a day.</p>
@@ -608,6 +701,57 @@ document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('clic
 /* Header: transparent over the hero, solid after it */
 (function(){ const h=document.getElementById('hdr'), hero=document.querySelector('.hero');
   const set=()=>h.classList.toggle('solid',scrollY>hero.offsetHeight-80); addEventListener('scroll',set,{passive:true}); set(); })();
+
+/* Headings: wrap so they slide up line by line */
+document.querySelectorAll('.sec-head h2,.contact h2').forEach(h=>{ h.innerHTML=`<span class="ln"><span>${h.innerHTML}</span></span>`; });
+
+/* 3D windows: stack green layers behind the E, then let it sway and follow the pointer */
+(function(){
+  const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+  const mix=(a,b,t)=>'rgb('+hex(a).map((v,i)=>Math.round(v+(hex(b)[i]-v)*t)).join(',')+')';
+  const objs=[...document.querySelectorAll('.e3d')].map(el=>{
+    const n=el.classList.contains('hero-e')?24:14, depth=el.classList.contains('hero-e')?72:36;
+    let html='<i class="halo"></i>';
+    for(let i=n;i>=2;i--) html+=`<i class="ly" style="--z:${(-i*depth/n).toFixed(1)}px;--c:${mix('#2F7A55','#0E261B',i/n)}"></i>`;
+    html+='<i class="edge"></i>';
+    el.insertAdjacentHTML('afterbegin',html);
+    const o={el,area:el.closest('section'),tx:0,ty:0,cx:0,cy:0,vis:true,base:el.classList.contains('hero-e')?20:16};
+    o.area.addEventListener('pointermove',e=>{ const r=o.area.getBoundingClientRect(); o.tx=(e.clientX-r.left)/r.width-.5; o.ty=(e.clientY-r.top)/r.height-.5; });
+    o.area.addEventListener('pointerleave',()=>{ o.tx=0; o.ty=0; });
+    if('IntersectionObserver' in window) new IntersectionObserver(([en])=>o.vis=en.isIntersecting).observe(el);
+    return o;
+  });
+  const draw=t=>{ objs.forEach(o=>{ if(!o.vis) return;
+    o.cx+=(o.tx-o.cx)*.06; o.cy+=(o.ty-o.cy)*.06;
+    const sway=reduceMotion?0:Math.sin(t/2600)*6, bob=reduceMotion?0:Math.cos(t/3300)*3;
+    o.el.style.transform=`perspective(1400px) rotateX(${(bob-4-o.cy*14).toFixed(2)}deg) rotateY(${(o.base+sway+o.cx*24).toFixed(2)}deg)`;
+    o.el.style.setProperty('--px',(-o.cx*26).toFixed(1)+'px'); o.el.style.setProperty('--py',(-o.cy*20).toFixed(1)+'px'); });
+    if(!reduceMotion) requestAnimationFrame(draw); };
+  requestAnimationFrame(draw);
+})();
+
+const finePointer=matchMedia('(pointer:fine)').matches;
+/* Thumbnails and plates tilt toward the pointer */
+if(finePointer&&!reduceMotion) document.querySelectorAll('.card .thumb,.plate button').forEach(th=>{
+  th.addEventListener('pointermove',e=>{ const r=th.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+    th.style.setProperty('--ty',((x-.5)*9).toFixed(2)+'deg'); th.style.setProperty('--tx',((.5-y)*9).toFixed(2)+'deg');
+    th.style.setProperty('--sx',(x*100).toFixed(1)+'%'); th.style.setProperty('--sy',(y*100).toFixed(1)+'%'); });
+  th.addEventListener('pointerleave',()=>{ th.style.setProperty('--tx','0deg'); th.style.setProperty('--ty','0deg'); });
+});
+
+/* Green play cursor over films */
+if(finePointer&&!reduceMotion){
+  const c=document.createElement('div'); c.className='cursor mono'; c.setAttribute('aria-hidden','true'); document.body.appendChild(c);
+  let x=-200,y=-200,cx=-200,cy=-200,s=0,ts=0;
+  addEventListener('pointermove',e=>{ x=e.clientX; y=e.clientY; const t=e.target.closest('.card,.feature,.plate.film button'); ts=t?1:0; if(t) c.textContent=t.classList.contains('feature')?'Watch':'Play'; },{passive:true});
+  (function f(){ cx+=(x-cx)*.22; cy+=(y-cy)*.22; s+=(ts-s)*.2; c.style.transform=`translate(${cx.toFixed(1)}px,${cy.toFixed(1)}px) scale(${s.toFixed(3)})`; requestAnimationFrame(f); })();
+}
+
+/* Featured film tilts up into place as it scrolls in */
+(function(){ const f=document.getElementById('reel'); if(reduceMotion) return;
+  const upd=()=>{ const r=f.getBoundingClientRect(), p=Math.min(1,Math.max(0,(innerHeight-r.top)/(innerHeight*.85)));
+    f.style.setProperty('--fr',((1-p)*22).toFixed(2)+'deg'); f.style.setProperty('--fs',(.88+.12*p).toFixed(3)); };
+  addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd(); })();
 
 /* Reveal on scroll */
 (function(){
