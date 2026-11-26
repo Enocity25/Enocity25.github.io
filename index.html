@@ -21,7 +21,7 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ============ ENOCH A BRAND TOKENS (see brand.html) ============ */
 :root{
@@ -35,7 +35,8 @@
   --muted-d:#9A9DA4;    /* secondary text on dark */
   --line:rgba(28,30,34,.14);
   --line-d:rgba(243,243,243,.14);
-  --sans:'Outfit',system-ui,sans-serif;
+  --sans:'Manrope',system-ui,sans-serif;
+  --logo:'Outfit',system-ui,sans-serif;   /* wordmark only, never changes */
   --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
   --maxw:1320px;
   --ease:cubic-bezier(.2,.7,.2,1);
@@ -48,8 +49,8 @@ a{color:inherit}
 img,svg{display:block;max-width:100%}
 button{font:inherit;color:inherit}
 .wrap{width:min(var(--maxw),calc(100% - 48px));margin-inline:auto;position:relative}
-h1,h2,h3{font-weight:700;letter-spacing:-.035em;line-height:.98}
-h3{letter-spacing:-.015em;line-height:1.15;font-weight:600}
+h1,h2,h3{font-weight:800;letter-spacing:-.045em;line-height:.98}
+h3{letter-spacing:-.02em;line-height:1.15;font-weight:700}
 p{max-width:58ch}
 .mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .dark{background:var(--ink);color:var(--paper)}
@@ -74,7 +75,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 header{position:fixed;top:0;left:0;right:0;z-index:50;color:var(--paper);transition:background .35s,color .35s,border-color .35s;border-bottom:1px solid transparent}
 header.solid{background:rgba(243,243,243,.92);color:var(--ink);border-color:var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;letter-spacing:.22em;font-size:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--logo);font-weight:700;letter-spacing:.22em;font-size:14px}
 .brand svg{width:24px;height:28px}
 .nav ul{display:flex;gap:30px;list-style:none;font-size:15px}
 .nav ul a{text-decoration:none;opacity:.75;transition:opacity .2s}
@@ -85,7 +86,10 @@ header.solid{background:rgba(243,243,243,.92);color:var(--ink);border-color:var(
 
 /* ---------- hero: the E mark as a window onto the films ---------- */
 .hero{color:var(--paper);position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 40px;overflow:hidden;background:var(--ink)}
-.hero .glow{position:absolute;inset:0;overflow:hidden}
+.hero .bgv{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--ink)}
+.hero .bgv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.hero .bgv::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,21,24,.9) 0%,rgba(20,21,24,.72) 42%,rgba(20,21,24,.42) 100%),linear-gradient(0deg,rgba(20,21,24,.92) 0%,rgba(20,21,24,0) 45%),linear-gradient(180deg,rgba(20,21,24,.6) 0%,rgba(20,21,24,0) 22%)}
+.hero .glow{display:none}
 .hero .glow img{position:absolute;inset:-60px;width:calc(100% + 120px);height:calc(100% + 120px);object-fit:cover;filter:blur(60px) brightness(.32) saturate(.8);opacity:0;transition:opacity 1.4s ease}
 .hero .glow img.on{opacity:1}
 /* 3D window: the unchanged E, given depth by stacked green layers behind it (built in the script) */
@@ -93,7 +97,7 @@ header.solid{background:rgba(243,243,243,.92);color:var(--ink);border-color:var(
 .e3d .ly{position:absolute;inset:0;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;background:var(--c);transform:translateZ(var(--z))}
 .e3d .halo{position:absolute;inset:-30%;background:radial-gradient(closest-side,rgba(47,122,85,.5),rgba(47,122,85,.12) 55%,transparent 75%);transform:translateZ(-90px);pointer-events:none}
 .e3d .edge{position:absolute;inset:0;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;background:var(--green-light);transform:translateZ(-1px)}
-.hero-e{position:absolute;right:max(40px,calc((100% - var(--maxw)) / 2 + 20px));top:96px;height:min(calc(100svh - 340px),660px);z-index:1}
+.hero-e{position:absolute;right:max(40px,calc((100% - var(--maxw)) / 2 + 20px));top:92px;height:min(calc(100svh - 312px),700px);z-index:1}
 .window{position:absolute;inset:0;-webkit-mask:var(--mark) center/contain no-repeat;mask:var(--mark) center/contain no-repeat;background:#26272c;transform:translateZ(0)}
 .window img{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:50% 30%;opacity:0;transition:opacity 1.2s ease;scale:1.06;transform:translate3d(var(--px,0px),var(--py,0px),0)}
 .window img.on{opacity:1;animation:push 6s ease-out forwards}
@@ -103,14 +107,15 @@ header.solid{background:rgba(243,243,243,.92);color:var(--ink);border-color:var(
 .js .hero .content>*:nth-child(2){animation-delay:.12s}.js .hero .content>*:nth-child(3){animation-delay:.24s}.js .hero .content>*:nth-child(4){animation-delay:.36s}
 @keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
-.hero h1{font-size:clamp(46px,7vw,112px);max-width:9.6ch;color:var(--paper)}
-.hero h1 span{color:var(--green-light)}
+.hero h1{font-size:clamp(48px,7.6vw,124px);color:var(--paper);line-height:.95}
+.hero h1 .l{display:block;white-space:nowrap}
+.hero h1 .hl{color:var(--green-light)}
 .hero .sub{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;margin-top:40px;padding-top:26px;border-top:1px solid var(--line-d)}
 .hero .sub p{color:#C9CBD0;font-size:clamp(16px,1.4vw,19px)}
 .hero .sub .acts{display:flex;gap:12px;flex-wrap:wrap}
 .hero .meta{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:34px;color:var(--muted-d)}
 .hero .meta b{color:var(--paper);font-weight:500}
-.hero .now{position:absolute;right:max(24px,calc((100% - var(--maxw)) / 2));top:calc(96px + min(calc(100svh - 340px),660px) + 12px);color:var(--muted-d);z-index:2;background:none;border:0;cursor:pointer;text-align:right}
+.hero .now{position:absolute;right:max(24px,calc((100% - var(--maxw)) / 2));top:calc(92px + min(calc(100svh - 312px),700px) + 12px);color:var(--muted-d);z-index:2;background:none;border:0;cursor:pointer;text-align:right}
 .hero .now:hover{color:var(--paper)}
 @media(max-width:900px){
   .hero-e{position:relative;right:auto;top:auto;height:auto;width:min(54vw,340px);margin:0 auto 30px}
@@ -162,7 +167,7 @@ section.block{padding:clamp(80px,10vw,150px) 0}
 .card:nth-child(5n+3){grid-column:span 4}.card:nth-child(5n+4){grid-column:span 4}.card:nth-child(5n){grid-column:span 4}
 .card .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:#d9d9d9;border-radius:2px}
 .card:nth-child(5n+1) .thumb,.card:nth-child(5n+2) .thumb{aspect-ratio:16/11}
-@media(min-width:901px){.card:last-child:nth-child(5n+1){grid-column:span 12}.card:last-child:nth-child(5n+1) .thumb{aspect-ratio:21/9}}
+@media(min-width:901px){.card:last-child:nth-child(5n+3){grid-column:span 12}.card:last-child:nth-child(5n+3) .thumb{aspect-ratio:21/9}.card:last-child:nth-child(5n+1){grid-column:span 12}.card:last-child:nth-child(5n+1) .thumb{aspect-ratio:21/9}}
 .card .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform 1.1s var(--ease),filter .6s}
 .card:hover .thumb img{transform:scale(1.045)}
 .card .thumb .tag{position:absolute;left:12px;top:12px;background:var(--ink);color:var(--paper);padding:5px 9px;border-radius:2px}
@@ -253,7 +258,7 @@ form .btn{justify-self:start;min-width:220px}
 .foot{padding:clamp(70px,9vw,120px) 0 28px}
 .foot .big{display:flex;align-items:center;gap:3vw;color:var(--paper)}
 .foot .big svg{width:11vw;height:auto;flex:none}
-.foot .big span{font-weight:700;letter-spacing:.14em;font-size:10.6vw;line-height:1;white-space:nowrap}
+.foot .big span{font-family:var(--logo);font-weight:700;letter-spacing:.14em;font-size:10.6vw;line-height:1;white-space:nowrap}
 .foot .row2{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line-d);color:var(--muted-d)}
 .foot .row2 a{text-decoration:none}
 .foot .row2 a:hover{color:var(--paper)}
@@ -312,7 +317,7 @@ section.block{position:relative}
 .row:hover h3{transform:translateX(10px)}
 
 /* ---------- film tags in muted category colours ---------- */
-.card[data-cat=ad] .tag{background:#B9654F}.card[data-cat=explainer] .tag{background:#3D7F78}.card[data-cat=story] .tag{background:#4E4775}.card[data-cat=series] .tag{background:#557894}.card[data-cat=kids] .tag{background:#9C7A33}
+.card[data-cat=ad] .tag{background:#B9654F}.card[data-cat=explainer] .tag{background:#3D7F78}.card[data-cat=story] .tag{background:#4E4775}.card[data-cat=series] .tag{background:#557894}.card[data-cat=kids] .tag{background:#9C7A33}.card[data-cat=twod] .tag{background:#7A4E8C}
 .filters button[aria-pressed=true]{border-color:var(--green);color:var(--green)}
 
 /* ---------- 3D tilt on thumbnails and plates ---------- */
@@ -373,14 +378,15 @@ section.block{position:relative}
 
 <!-- HERO: the E mark is a window onto frames from the films -->
 <section class="hero">
+  <div class="bgv" aria-hidden="true"><video id="bgvideo" poster="media/hero-poster.jpg" autoplay muted loop playsinline preload="auto"><source src="media/hero-reel.webm" type="video/webm"><source src="media/hero-reel.mp4" type="video/mp4"></video></div>
   <div class="glow" id="glow" aria-hidden="true"></div>
   <div class="e3d hero-e" id="e3d" aria-hidden="true"><div class="window" id="window"></div></div>
   <button type="button" class="now mono" id="nowbtn">Now showing: —</button>
   <div class="wrap content">
-    <p class="mono" style="color:var(--muted-d);margin-bottom:22px">Enoch A — AI animation in 3D, realistic, 2D, anime and claymation styles</p>
-    <h1>Animated films for stories that deserve a <span>studio.</span></h1>
+    <p class="mono" style="color:#B9BCC4;margin-bottom:22px">3D — Realistic — 2D — Anime — Claymation</p>
+    <h1><span class="l">Your story,</span><span class="l">animated in</span><span class="l hl">any style.</span></h1>
     <div class="sub">
-      <p>Story ads, brand films, explainers, wedding stories and series episodes, in the style that fits your story: Pixar-style 3D, realistic and cinematic, 2D cartoon, anime or claymation. From your script to a finished film, usually in days rather than months.</p>
+      <p>Story ads, brand films and series, made with AI. From script to finished film in days.</p>
       <div class="acts">
         <a class="btn btn-green" href="https://wa.me/2348150669604?text=Hi%20Enoch%2C%20I%27d%20like%20to%20talk%20about%20an%20animated%20video." target="_blank" rel="noopener">Start on WhatsApp <i>→</i></a>
         <a class="btn btn-line" href="#work">See the work <i>↓</i></a>
@@ -434,6 +440,7 @@ section.block{position:relative}
       <button aria-pressed="false" data-filter="explainer">Explainers</button>
       <button aria-pressed="false" data-filter="story">Personal stories</button>
       <button aria-pressed="false" data-filter="series">Series</button>
+      <button aria-pressed="false" data-filter="twod">2D</button>
     </div>
     <div class="grid" id="grid"></div>
   </div>
@@ -588,21 +595,23 @@ section.block{position:relative}
 const SHOWREEL = "";   // a Drive or YouTube link to a 60-90 second reel, if you make one
 const PROJECTS = [
   {cat:"ad",        title:"Dave's glow-up: a website story", blurb:"A struggling business owner gets a new website and his phone starts ringing. Vertical story ad for Untitled, a web design agency.", video:"https://drive.google.com/file/d/1BhdPEyeBt4BPeox7Bw7MkjiFDnSqczn2/view", tall:true, len:"1:07"},
+  {cat:"ad",        title:"Reign & Stone: Mix-Up at the Gym", blurb:"A 3D brand commercial set at the gym, made for Reign & Stone, a brand of luxury tumblers and personalised charms.", video:"https://drive.google.com/file/d/1qSuLG0EFHHH0ZF4fbSa5czt9gg5rNwpj/view"},
+  {cat:"twod",      title:"Miss Marvelous", blurb:"A 2D cartoon in a simple stick-figure style, made in vertical format.", video:"https://drive.google.com/file/d/1oRdclA_-iVMNrWuIwpOpo0NJZD-774m0/view", tall:true, style:"2D"},
   {cat:"explainer", title:"'Over Coffee': TWS partner intro", blurb:"Two partners talk business over coffee in a town square. Dutch-language explainer for TWS Projects.", video:"https://drive.google.com/file/d/1zGHEjYV2qfdEnyO75XUhrsn-aErEXlqn/view", len:"1:18"},
-  {cat:"story",     title:"How we met: a wedding story", blurb:"A couple's love story, from first messages and everyday moments to snowy trips and a seaside wedding.", video:"https://drive.google.com/file/d/1U4bq6U7ccivZJiboGPL8jB5kfrDo0NA_/view", len:"3:27"},
+  {cat:"story",     title:"How we met: a wedding story", blurb:"A couple's love story, from first messages and everyday moments to snowy trips and a seaside wedding.", video:"https://drive.google.com/file/d/1U4bq6U7ccivZJiboGPL8jB5kfrDo0NA_/view"}  /* revised cut: 1IHvFGkiG5mxeF4Ea01Q_nNYWmgSlfA5E, switch once its link is view-only */,
   {cat:"ad",        title:"Dr Jet: the founders' story", blurb:"Two friends leave dead-end routines behind and open their own car detailing clinic. Vertical brand story for Dr Jet Detailing Clinic.", video:"https://drive.google.com/file/d/1OnV9gcIDGU9snR8GYbBz3ZLCY57pbVlC/view", tall:true, len:"1:38"},
   {cat:"ad",        title:"Colorado: a home of your own", blurb:"Teachers and everyday workers in Colorado find a path to buying a home. Vertical ad for a mortgage loan originator.", video:"https://drive.google.com/file/d/1K5-8oAGVk2mtwTgn4IiTqjq0fcgpXa1u/view", tall:true, len:"0:31"},
   {cat:"ad",        title:"Skincare serum story", blurb:"A tired woman with dark circles gets her glow back with a collagen serum, guided by a skincare expert. Vertical story ad.", video:"https://drive.google.com/file/d/1GpuWcGFrJWYRMBhnt9S1Uw10WOSkYz-D/view", tall:true, len:"5:23"},
   {cat:"ad",        title:"Fitness at home, no gym needed", blurb:"An older woman who feels the gym isn't for her tries a vibration plate at home. Vertical product ad in Danish.", video:"https://drive.google.com/file/d/1JoT5x7s7oZ090P8sXWVOhA3SbbMMDH0Z/view", tall:true, len:"0:55"},
   {cat:"story",     title:"A day with Marilyn's Moment", blurb:"A creator's day, from morning prayer to filming, made as a promo for her YouTube channel.", video:"https://drive.google.com/file/d/1gchnvMinABy6Mc0HZ2YzCt6ofxaZfTMx/view", tall:true, len:"0:46"},
   {cat:"series",    title:"Sister Girl, Ep 2: The Money Talk", blurb:"Four friends finally have the money conversation nobody wants. Episode from an animated series.", video:"https://drive.google.com/file/d/1gpUbipUSHnypTJMZjDhwf69e8cytPxUZ/view", len:"0:51"},
-  {cat:"ad",        title:"Dr Diana: a dentist kids will love", blurb:"Dr Diana welcomes young patients to Native Dental with a wave, a toothbrush and a little sparkle. Character film built from the sheets in the Characters section.", video:"https://drive.google.com/file/d/1E2UDgu_KamQnLoTKApXBy70R9gsUWuQa/view", len:"0:18"},
   {cat:"ad",        title:"Cream glow", blurb:"A woman gets ready at her bathroom mirror, then steps into a grand evening event. Vertical skincare ad.", video:"https://drive.google.com/file/d/1xaYKUwRaOzM74Bc8j9kSYMjTWoMOxp_v/view", tall:true, len:"1:04"},
+  {cat:"ad",        title:"Dr Diana: a dentist kids will love", blurb:"Dr Diana welcomes young patients to Native Dental with a wave, a toothbrush and a little sparkle. Character film built from the sheets in the Characters section.", video:"https://drive.google.com/file/d/1E2UDgu_KamQnLoTKApXBy70R9gsUWuQa/view", len:"0:18"}
 ];
 /* Frames shown inside the E in the hero: positions in PROJECTS, counting from 0 */
-const HERO_FRAMES = [9, 0, 8, 3];
+const HERO_FRAMES = [12, 1, 0, 10];
 
-const labels={ad:"Story ad",explainer:"Explainer",story:"Personal story",kids:"Kids",series:"Series"};
+const labels={ad:"Story ad",explainer:"Explainer",story:"Personal story",kids:"Kids",series:"Series",twod:"2D animation"};
 const driveId=url=>{ const m=(url||"").match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=)([\w-]{20,})/); return m?m[1]:""; };
 const ytId=url=>{ const m=(url||"").match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/); return m?m[1]:""; };
 function autoThumb(p,w=1200){
@@ -634,7 +643,7 @@ const grid=document.getElementById('grid');
 grid.innerHTML=PROJECTS.map((p,i)=>`
   <button class="card" data-cat="${p.cat}" data-i="${i}" type="button" data-reveal>
     <div class="thumb">${IMG(autoThumb(p),'loading="lazy"')}<span class="tag mono">${labels[p.cat]}</span><span class="go mono">${p.video?'Play film ↗':'Coming soon'}</span></div>
-    <div class="meta mono"><span>${pad(i+1)}</span><span>${p.len||''}${p.tall?' — 9:16':' — 16:9'}</span></div>
+    <div class="meta mono"><span>${pad(i+1)}</span><span>${p.len?p.len+' — ':''}${p.style||'3D'} — ${p.tall?'9:16':'16:9'}</span></div>
     <h3>${p.title}</h3>
     <p>${p.blurb}</p>
   </button>`).join('');
@@ -646,14 +655,16 @@ document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('clic
   const f=b.dataset.filter; document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hidden',f!=='all'&&c.dataset.cat!==f));
 }));
 
+/* Background video: still poster only if the visitor prefers less motion */
+(function(){ const v=document.getElementById('bgvideo'); if(!v) return; if(reduceMotion){ v.removeAttribute('autoplay'); v.pause(); } else { const pl=v.play(); if(pl&&pl.catch) pl.catch(()=>{}); } })();
+
 /* Hero: frames cycle inside the E, with a soft glow of the same frame behind */
 (function(){
   const win=document.getElementById('window'), glow=document.getElementById('glow'), now=document.getElementById('nowbtn');
   const list=HERO_FRAMES.map(i=>({i,p:PROJECTS[i]})).filter(o=>o.p&&o.p.video);
   if(!list.length){ now.hidden=true; return; }
   win.innerHTML=list.map((o,k)=>IMG(autoThumb(o.p,1600),k?'class="" loading="lazy"':'class="on"')).join('');
-  glow.innerHTML=list.map((o,k)=>IMG(autoThumb(o.p,400),k?'':'class="on"')).join('');
-  const a=[...win.querySelectorAll('img')], g=[...glow.querySelectorAll('img')];
+  const a=[...win.querySelectorAll('img')], g=[];
   let cur=0;
   const show=k=>{ cur=k; [a,g].forEach(set=>set.forEach((im,j)=>{ if(j===k){ im.classList.remove('on'); void im.offsetWidth; im.classList.add('on'); } else im.classList.remove('on'); }));
     now.textContent='Now showing: '+list[k].p.title+' ↗'; };
@@ -675,7 +686,7 @@ document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('clic
   const slides=[...box.querySelectorAll('.slide')], t=document.getElementById('ftitle'), m=document.getElementById('fmeta'), n=document.getElementById('fcount');
   let cur=0, timer=0, paused=false;
   const show=k=>{ cur=(k+list.length)%list.length; slides.forEach((s,j)=>s.classList.toggle('on',j===cur));
-    const p=list[cur].p; t.textContent=p.title; m.textContent=`${labels[p.cat]} — ${p.len||''}`; n.textContent=`${pad(cur+1)} / ${pad(list.length)}`;
+    const p=list[cur].p; t.textContent=p.title; m.textContent=[labels[p.cat],p.style||'3D',p.len].filter(Boolean).join(' — '); n.textContent=`${pad(cur+1)} / ${pad(list.length)}`;
     box.setAttribute('aria-label',`Featured film: ${p.title}. Press Enter to watch.`); };
   const tick=()=>{ clearTimeout(timer); if(!reduceMotion&&!paused&&!document.hidden) timer=setTimeout(()=>{ show(cur+1); tick(); },6000); };
   document.getElementById('fprev').onclick=()=>{ show(cur-1); tick(); };

@@ -10,11 +10,11 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -10 174 190'%3E%3Cpath fill='%231C1E22' d='M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1C1E22;--paper:#F3F3F3;--white:#FFFFFF;--green:#2F7A55;--green-deep:#1F5139;--green-soft:#DCEBE2;--green-light:#8CCBA8;
-  --muted:#6B6E75;--line:rgba(28,30,34,.12);--font:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--maxw:1120px;
+  --muted:#6B6E75;--line:rgba(28,30,34,.12);--font:'Manrope',system-ui,sans-serif;--logo:'Outfit',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--maxw:1120px;
   --mark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 170'%3E%3Cpath d='M22 0h100l26 42H48ZM0 56h80l26 42H48v20h74l26 42H0Z'/%3E%3C/svg%3E");
   --ebar:polygon(0 0,79.4% 0,100% 100%,20.6% 100%);
 }
@@ -22,7 +22,7 @@
 body{font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .wrap{width:min(var(--maxw),calc(100% - 40px));margin-inline:auto}
-h1,h2,h3{line-height:1;letter-spacing:-.035em;font-weight:700}
+h1,h2,h3{line-height:1;letter-spacing:-.045em;font-weight:800}
 h1{font-size:clamp(40px,7vw,88px)}
 h2{font-size:clamp(28px,4vw,44px);margin-bottom:12px}
 h3{font-size:19px;letter-spacing:-.01em;font-weight:700}
@@ -47,7 +47,7 @@ code{font-family:var(--mono);font-size:.85em}
 /* header */
 header{position:sticky;top:0;z-index:5;background:rgba(243,243,243,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;letter-spacing:.22em;font-size:15px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--logo);font-weight:700;letter-spacing:.22em;font-size:15px}
 .brand svg{width:28px;height:32px}
 .nav a.back{font-size:15px;text-decoration:none;color:var(--muted)}
 .nav a.back:hover{color:var(--green)}
@@ -59,7 +59,7 @@ header{position:sticky;top:0;z-index:5;background:rgba(243,243,243,.9);backdrop-
 .hero{padding:clamp(56px,8vw,104px) 0;border:0}
 .hero .lockup{display:flex;align-items:center;gap:clamp(18px,3vw,34px);margin-bottom:40px}
 .hero .lockup svg{width:clamp(64px,9vw,110px);height:auto}
-.hero .lockup span{font-weight:700;letter-spacing:.22em;font-size:clamp(22px,3.6vw,44px)}
+.hero .lockup span{font-family:var(--logo);font-weight:700;letter-spacing:.22em;font-size:clamp(22px,3.6vw,44px)}
 
 /* logo section */
 .logo-tile{border-radius:2px;aspect-ratio:4/3;display:grid;place-items:center;position:relative}
@@ -117,7 +117,7 @@ header{position:sticky;top:0;z-index:5;background:rgba(243,243,243,.9);backdrop-
 .crop .t span{color:var(--green-light)}
 .wm-strip{background:var(--ink);color:#F3F3F3;display:flex;align-items:center;gap:3%;padding:28px;border-radius:2px;overflow:hidden}
 .wm-strip svg{width:12%;height:auto;flex:none}
-.wm-strip span{font-weight:700;letter-spacing:.14em;font-size:clamp(22px,3.2vw,38px);line-height:1;white-space:nowrap}
+.wm-strip span{font-family:var(--logo);font-weight:700;letter-spacing:.14em;font-size:clamp(22px,3.2vw,38px);line-height:1;white-space:nowrap}
 .ebar{display:inline-block;background:var(--green);clip-path:var(--ebar)}
 .device{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
 @media(max-width:760px){.device{grid-template-columns:1fr}}
@@ -260,16 +260,16 @@ footer{padding:34px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 <section id="type">
   <div class="wrap">
     <span class="eyebrow">03 <b>Typography</b></span>
-    <h2>Outfit, with a mono for labels</h2>
-    <p class="lead">Outfit carries the brand: headlines, body text and the wordmark. Its geometric shapes match the straight cuts of the E. <b style="color:var(--ink)">JetBrains Mono</b> is used small, in capitals, for labels, numbers and running times, the way a film slate or a credit sheet would. Both are free on Google Fonts (<a href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noopener">Outfit</a>, <a href="https://fonts.google.com/specimen/JetBrains+Mono" target="_blank" rel="noopener">JetBrains Mono</a>).</p>
-    <div class="weights"><span style="font-weight:300">Light</span><span style="font-weight:400">Regular</span><span style="font-weight:500">Medium</span><span style="font-weight:700">Bold</span><span style="font-weight:800">ExtraBold</span><span class="mono" style="font-size:22px;letter-spacing:.04em;align-self:center">Mono 400</span></div>
+    <h2>Manrope for the site, Outfit for the logo</h2>
+    <p class="lead"><b style="color:var(--ink)">Manrope</b> is used for every headline and all body text on the website and in documents. <b style="color:var(--ink)">Outfit</b> is reserved for the ENOCH A wordmark only, so the logo never changes. <b style="color:var(--ink)">JetBrains Mono</b> is used small, in capitals, for labels, numbers and running times, the way a film slate or a credit sheet would. All three are free on Google Fonts (<a href="https://fonts.google.com/specimen/Manrope" target="_blank" rel="noopener">Manrope</a>, <a href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noopener">Outfit</a>, <a href="https://fonts.google.com/specimen/JetBrains+Mono" target="_blank" rel="noopener">JetBrains Mono</a>).</p>
+    <div class="weights"><span style="font-weight:400">Regular</span><span style="font-weight:500">Medium</span><span style="font-weight:700">Bold</span><span style="font-weight:800">ExtraBold</span><span class="mono" style="font-size:22px;letter-spacing:.04em;align-self:center">Mono 400</span></div>
     <div style="margin-top:34px">
-      <div class="spec"><div class="meta"><b>Display</b>Bold 700 · 80–128 px · −3.5% · line 0.98</div><div style="font-size:clamp(40px,7vw,88px);font-weight:700;letter-spacing:-.035em;line-height:.98">Stories that deserve a studio.</div></div>
-      <div class="spec"><div class="meta"><b>Section heading</b>Bold 700 · 40–104 px · −3.5%</div><div style="font-size:clamp(30px,4.6vw,56px);font-weight:700;letter-spacing:-.035em;line-height:1">How a film gets made</div></div>
-      <div class="spec"><div class="meta"><b>Title</b>SemiBold 600 · 20–26 px</div><div style="font-size:24px;font-weight:600;letter-spacing:-.015em">Dr Jet: the founders' story</div></div>
+      <div class="spec"><div class="meta"><b>Display</b>Manrope ExtraBold 800 · 80–124 px · −4.5% · line 0.95</div><div style="font-size:clamp(40px,7vw,88px);font-weight:800;letter-spacing:-.045em;line-height:.95">Your story, animated in any style.</div></div>
+      <div class="spec"><div class="meta"><b>Section heading</b>Manrope ExtraBold 800 · 40–104 px · −4.5%</div><div style="font-size:clamp(30px,4.6vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1">How a film gets made</div></div>
+      <div class="spec"><div class="meta"><b>Title</b>Manrope Bold 700 · 20–26 px</div><div style="font-size:24px;font-weight:700;letter-spacing:-.02em">Dr Jet: the founders' story</div></div>
       <div class="spec"><div class="meta"><b>Body</b>Regular 400 · 16–18 px · line 1.5</div><div style="font-size:17px;max-width:58ch">Pixar-style 3D animation, made with AI, from your script to a finished film.</div></div>
       <div class="spec"><div class="meta"><b>Label</b>JetBrains Mono 400 · 12 px · caps · +6%</div><div><span class="mono" style="color:var(--muted)">01 — Work &nbsp;&nbsp; 1:38 — 9:16</span></div></div>
-      <div class="spec"><div class="meta"><b>Wordmark</b>Bold 700 · caps · +22%</div><div style="font-weight:700;letter-spacing:.22em;font-size:20px">ENOCH A</div></div>
+      <div class="spec"><div class="meta"><b>Wordmark</b>Outfit Bold 700 · caps · +22% · logo only</div><div style="font-family:var(--logo);font-weight:700;letter-spacing:.22em;font-size:20px">ENOCH A</div></div>
     </div>
   </div>
 </section>
